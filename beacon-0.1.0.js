@@ -30,7 +30,9 @@ window.Beacon = function(B) {
             
             for(var i = 0; i < length; i++) {
                 var callback = signals[scopeIndex][signalName][i];
-                callback(data, error);
+                if(callback !== null && typeof callback === 'function') {
+                    callback(data, error);
+                }
             }
         }
     };
