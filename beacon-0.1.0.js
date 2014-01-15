@@ -35,6 +35,36 @@ window.Beacon = function(B) {
         }
     };
     
+    B.isBeacon = function(scopeObj) {
+        return getScopeIndex(scopeObj) >= 0;
+    }
+    
+    B.isSignal = function(scopeObj, signalName) {
+        var scopeIndex = getScopeIndex(scopeObj);
+        if(scopeIndex === -1) return false;
+        
+        return signals[scopeIndex].hasOwnProperty(signalName);
+    };
+    
+    B.killBeacon = function(scopeObj) {
+        var scopeIndex = getScopeIndex(scopeObj);
+        if(scopeIndex === -1) return;
+        
+        if(signals[scopeIndex]) {
+            signals.splice(scopeIndex, 1);
+        }
+    };
+    
+    B.killSignal = function(scopeObj, signalName) {
+        var scopeIndex = getScopeIndex(scopeObj);
+        if (scopeIndex === -1) return;
+        
+        if(signals[scopeIndex][signalName]) {
+            signals[scopeIndex][signalName] = null;
+            delete signals[scopeIndex][signalName];
+        }
+    };
+    
     return B;
 }(window.Beacon);
 
