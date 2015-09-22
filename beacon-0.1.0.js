@@ -1,6 +1,6 @@
-Beacon = {};
+Beacon = Beacon || {};
 
-Beacon = function(B) {
+(function(B) {
     var signals = {};
     var nextReceiverId = -1;
     
@@ -54,7 +54,7 @@ Beacon = function(B) {
     };
     
     return B;
-}(Beacon);
+}(Beacon));
 
 
 
