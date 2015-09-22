@@ -1,4 +1,4 @@
-Beacon = Beacon || {};
+var Beacon = Beacon || {};
 
 (function(B) {
     var signals = {};
